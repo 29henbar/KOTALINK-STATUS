@@ -19,9 +19,9 @@ Website: https://kidsontheair.org
 Reddit: https://www.reddit.com/r/KidsOnTheAir/
 ## Running the Server
 
-<a href="https://nodejs.org/en/download/package-manager">Install Node.js</a>
+Install <a href="https://nodejs.org/en/download/package-manager">Node.js</a>
 
-<a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Install git</a>
+Install <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a>
 
 git clone https://github.com/29henbar/KOTALINK-STATUS
 
