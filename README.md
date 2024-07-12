@@ -7,7 +7,8 @@ git clone https://github.com/29henbar/KOTALINK-STATUS
 
 cd /KOTALINK-STATUS
 
-npm install express axios child_process
+npm install express axios child_process ejs
+
 npm -i
 
 Run:
