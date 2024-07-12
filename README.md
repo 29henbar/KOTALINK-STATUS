@@ -17,7 +17,7 @@ Join the Discord: https://discord.gg/e4URZEEer6
 Website: https://kidsontheair.org
 
 Reddit: https://www.reddit.com/r/KidsOnTheAir/
-# Running the Server
+# Setting Up the Server
 
 Install <a href="https://nodejs.org/en/download/package-manager">Node.js</a>
 
@@ -31,11 +31,11 @@ npm install express axios child_process ejs
 
 npm -i
 
-## Run:
+## Run the Server:
 
 node app.js
 
-## Contributers
+# Contributers
 
 ### Frontend
     Built and Maintained by: Henry KD9YWF
