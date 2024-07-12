@@ -10,4 +10,6 @@ cd /KOTALINK-STATUS
 npm install express axios child_process
 npm -i
 
+Run:
+
 node app.js
