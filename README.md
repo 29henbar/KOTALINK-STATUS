@@ -39,3 +39,8 @@ node app.js
     Built and Maintained by: Henry KD9YWF
 ### Backend
     Built and Maintained by: VALER K0NNK
+
+
+<img src="/assets/KOTA_LOGO.png"
+     alt="KOTA Logo"
+     style="float: left; margin-right: 10px;" />
