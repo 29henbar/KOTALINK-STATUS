@@ -16,7 +16,7 @@ Join the Discord: https://discord.gg/e4URZEEer6
 
 Website: https://kidsontheair.org
 
-## Running Server
+## Running the Server
 Install https://nodejs.org/en
 
 Install git
