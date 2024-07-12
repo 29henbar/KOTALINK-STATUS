@@ -17,7 +17,7 @@ Join the Discord: https://discord.gg/e4URZEEer6
 Website: https://kidsontheair.org
 
 Reddit: https://www.reddit.com/r/KidsOnTheAir/
-## Running the Server
+# Running the Server
 
 Install <a href="https://nodejs.org/en/download/package-manager">Node.js</a>
 
