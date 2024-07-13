@@ -34,8 +34,18 @@ async function getStatus() {
     console.error('Error fetching Allstar status:', error);
   }
 
-  // Echolink status
-  status.echolink = 'unknown';
+
+  // Echolink Status
+  try {
+    const allstarResponse = await axios.get('https://www.echolink.org/logins.jsp');
+    if (allstarResponse.data.includes('N0DYG-R')) {
+      status.echolink = 'working';
+    } else {
+      status.echolink = 'not working';
+    }
+  } catch (error) {
+    console.error('Error fetching Echolink status:', error);
+  }
 
   // HOIP status
   status.hoip = status.allstar;
