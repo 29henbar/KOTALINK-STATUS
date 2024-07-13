@@ -15,13 +15,21 @@
             position: relative;
         }
         .status-box {
-            background-color: yellow;
             color: #000000;
             display: inline-block;
             padding: 10px 20px;
             border-radius: 8px;
             margin-bottom: 10px;
             font-weight: bold;
+        }
+        .status-box.green {
+            background-color: #00c853;
+        }
+        .status-box.yellow {
+            background-color: #ffeb3b;
+        }
+        .status-box.red {
+            background-color: #f44336;
         }
         .diagram {
             display: flex;
@@ -48,15 +56,12 @@
         }
         .box.green {
             background-color: #00c853;
-            color: #000000;
         }
         .box.yellow {
             background-color: #ffeb3b;
-            color: #000000;
         }
         .box.red {
             background-color: #f44336;
-            color: #000000;
         }
         .status {
             margin-top: 5px;
@@ -76,7 +81,24 @@
 </head>
 <body>
     <h1>KOTA-LINK DIAGRAM</h1>
-    <div class="status-box" id="statusBox">KOTALINK OVERALL STATUS: <%= status.allstar === 'working' && status.dmr === 'working' && status.ysf === 'working' && status.p25 === 'working' ? 'WORKING' : 'TROUBLE' %></div>
+    <% 
+        const allNodes = [status.allstar, status.echolink, status.hoip, status.p25, status.dmr, status.ysf];
+        const onlineNodes = allNodes.filter(node => node === 'working');
+        let overallStatus = '';
+        let overallClass = '';
+
+        if (onlineNodes.length === allNodes.length) {
+            overallStatus = 'HEALTHY';
+            overallClass = 'green';
+        } else if (onlineNodes.length > 0) {
+            overallStatus = 'TROUBLE';
+            overallClass = 'yellow';
+        } else {
+            overallStatus = 'OFFLINE';
+            overallClass = 'red';
+        }
+    %>
+    <div class="status-box <%= overallClass %>" id="statusBox">KOTALINK OVERALL STATUS: <%= overallStatus %></div>
     <h3>KOTALINK:</h3>
     <div class="diagram">
         <div class="row">
