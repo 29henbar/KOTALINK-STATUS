@@ -15,6 +15,7 @@
             position: relative;
         }
         .status-box {
+            position: relative;
             color: #000000;
             display: inline-block;
             padding: 10px 20px;
@@ -71,6 +72,7 @@
         }
         .info-box {
             display: none;
+            text-emphasis: none;
             position: absolute;
             background-color: #ffffff;
             color: #000000;
@@ -78,8 +80,9 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 10;
+            white-space: nowrap;
         }
-        .box:hover .info-box {
+        .box:hover .info-box, .status-box:hover .info-box {
             display: block;
         }
         @media (min-width: 768px) {
@@ -109,30 +112,30 @@
             overallStatus = 'TROUBLE';
             overallClass = 'yellow';
         } else {
-            overallStatus = 'OFFLINE';
+            overallStatus = 'DOWN';
             overallClass = 'red';
         }
     %>
     <div class="status-box <%= overallClass %>" id="statusBox">KOTALINK OVERALL STATUS: <%= overallStatus %>
-    <div class="info-box">GREEN/HEALTHY: KOTALINK and all nodes are online and linked to the network. YELLOW/TROUBLE: One or more nodes is offline and unlinked. RED/OFFLINE: All nodes offline, KOTALINK is completly down.
-    </div></div>
+        <div class="info-box"><b>GREEN/HEALTHY:</b>All nodes are online and linked to the network. <br><b>YELLOW/TROUBLE:</b> One or more nodes is offline and unlinked. <br><b>RED/OFFLINE:</b> All nodes offline, KOTALINK is completely down.</div>
+    </div>
     <h3>KOTALINK:</h3>
     <div class="diagram">
         <div class="row">
             <div id="allstar" class="box <%= status.allstar === 'working' ? 'green' : 'red' %>">Allstar 57686
                 <span class="status"><%= status.allstar === 'working' ? ' (working)' : ' (not working)' %></span>
-                <div class="info-box">Allstar Node 57686: Additional info about this node.</div>
+                <div class="info-box">Allstar Node 57686: Connect your Allstar hotspot or node to node number 57686.</div>
             </div>
         </div>
         <h3>Others:</h3>
         <div class="row">
-            <div id="echolink1" class="box <%= status.echolink === 'working' ? 'green' : 'red' %>">N0DYG-R 910094
+            <div id="echolink1" class="box <%= status.echolink === 'working' ? 'green' : 'red' %>">EchoLink
                 <span class="status"><%= status.echolink %></span>
-                <div class="info-box">Echolink Node N0DYG-R: Additional info about this node.</div>
+                <div class="info-box">Echolink Node N0DYG-R #910094: <a href="https://webapp.echolink.org">Echolink in Browser</a> or Echolink on your device.</div>
             </div>
-            <div id="echolink2" class="box <%= status.hoip === 'working' ? 'green' : 'red' %>">HOIP#15031
+            <div id="echolink2" class="box <%= status.hoip === 'working' ? 'green' : 'red' %>">Hams Over IP
                 <span class="status"><%= status.hoip === 'working' ? ' (working)' : ' (not working)' %></span>
-                <div class="info-box">HOIP Node 15031: Additional info about this node.</div>
+                <div class="info-box">HOIP Node 15031</div>
             </div>
         </div>
         <div class="row">
@@ -141,29 +144,29 @@
         <div class="row">
             <div id="ab_mb" class="box">AB + MB
                 <span class="status"></span>
-                <div class="info-box">AB + MB Bridge: Additional info about this bridge.</div>
+                <div class="info-box">AB + MB Bridge</div>
             </div>
             <div id="mb" class="box">MB
                 <span class="status"></span>
-                <div class="info-box">MB Bridge: Additional info about this bridge.</div>
+                <div class="info-box">MB Bridge</div>
             </div>
             <div id="usrp2p25" class="box <%= status.p25 === 'working' ? 'green' : 'red' %>">USRP2P25
                 <span class="status"><%= status.p25 === 'working' ? ' (working)' : ' (not working)' %></span>
-                <div class="info-box">USRP2P25 Bridge: Additional info about this bridge.</div>
+                <div class="info-box">USRP2P25 Bridge: Status info for P25 nodes is often incorrect.</div>
             </div>
         </div>
         <div class="row">
             <div id="dmr" class="box <%= status.dmr === 'working' ? 'green' : 'red' %>">DMR TGIF: 350
                 <span class="status"><%= status.dmr === 'working' ? ' (working)' : ' (not working)' %></span>
-                <div class="info-box">DMR TGIF: 350: Additional info about this node.</div>
+                <div class="info-box">DMR TGIF: 350</div>
             </div>
             <div id="ysf" class="box <%= status.ysf === 'working' ? 'green' : 'red' %>">YSF: US-KOTA-LINK 57686
                 <span class="status"><%= status.ysf === 'working' ? ' (working)' : ' (not working)' %></span>
-                <div class="info-box">YSF: US-KOTA-LINK 57686: Additional info about this node.</div>
+                <div class="info-box">YSF: US-KOTA-LINK 57686</div>
             </div>
             <div id="p25" class="box <%= status.p25 === 'working' ? 'green' : 'red' %>">P25: 65103
                 <span class="status"><%= status.p25 === 'working' ? ' (working)' : ' (not working)' %></span>
-                <div class="info-box">P25: 65103: Additional info about this node.</div>
+                <div class="info-box">P25: 65103: Status info for P25 nodes is often incorrect</div>
             </div>
         </div>
     </div>

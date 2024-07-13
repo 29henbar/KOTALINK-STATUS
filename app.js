@@ -48,7 +48,16 @@ async function getStatus() {
   }
 
   // HOIP status
-  status.hoip = status.allstar;
+  try {
+    const hoipResponse = await axios.get('https://hamsoverip.com/phonebook');
+    if (hoipResponse.data.includes('15031')) {
+      status.hoip = 'working';
+    } else {
+      status.hoip = 'not working';
+    }
+  } catch (error) {
+    console.error('Error fetching HOIP status:', error);
+  }
 
   // DMR status
   exec('systemctl status analog_bridge', (error, stdout, stderr) => {
