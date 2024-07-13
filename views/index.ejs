@@ -84,7 +84,7 @@
         </div>
         <h3>Others:</h3>
         <div class="row">
-            <div id="echolink1" class="box">N0DYG-R 910094<span class="status"><%= status.echolink %></span></div>
+            <div id="echolink1" class="box <%= status.echolink === 'working' ? 'green' : 'red' %>">N0DYG-R 910094<span class="status"><%= status.echolink %></span></div>
             <div id="echolink2" class="box <%= status.hoip === 'working' ? 'green' : 'red' %>">HOIP#15031<span class="status"><%= status.hoip === 'working' ? ' (working)' : ' (not working)' %></span></div>
         </div>
         <div class="row">
