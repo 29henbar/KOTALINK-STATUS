@@ -61,8 +61,8 @@ async function getStatus() {
 
   // DMR status
   try {
-    const dmrResponse = await axios.get('https://api.tgif.network/dmr/talkgroups/json');
-    if (dmrResponse.data.includes('KOTA-LINK')) {
+    const dmrResponse = await axios.get('https://tgif.network/tgprofile.php?id=350');
+    if (dmrResponse.data.includes('350')) {
       status.dmr = 'working';
     } else {
       status.dmr = 'not working';
