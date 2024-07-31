@@ -60,13 +60,16 @@ async function getStatus() {
   }
 
   // DMR status
-  exec('systemctl status analog_bridge', (error, stdout, stderr) => {
-    if (!error && stdout.includes('active (running)')) {
+  try {
+    const dmrResponse = await axios.get('https://api.tgif.network/dmr/talkgroups/json');
+    if (dmrResponse.data.includes('KOTA-LINK')) {
       status.dmr = 'working';
     } else {
       status.dmr = 'not working';
     }
-  });
+  } catch (error) {
+    console.error('Error fetching DMR status:', error);
+  }
 
   exec('systemctl status mmdvm_bridge', (error, stdout, stderr) => {
     if (!error && stdout.includes('active (running)')) {

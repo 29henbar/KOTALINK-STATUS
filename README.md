@@ -8,7 +8,7 @@ The program in question, our Web-Based Curriculum Project provides a curated sol
 
 After getting licensed, they can participate in our KOTALINK Multi-Mode Digital & VOiP system. This allows a platform for the youth to easily connect with other youth through the use of a hotspot, their phone, or alternative method of VOiP / Allstar link, where they can also participate in KOTA Youth nets. 
 
-To promote activity in HF, we set up a KOTA Activation category, similar to that of POTA or SOTA, whereas the token station is primarily a youth operated club (such as a school) or youth individual. We also plan to create a program prompting the youth to engage in CW activity and learning. When all is said and done, we aim to go full force on an outreach program, to reach out in as many ways as possible to implement our curriculum program in schools, institutions, and ofc, to the young demographic.
+To promote activity in HF, we set up a KOTA Activation category, similar to that of POTA or SOTA, whereas the token station is primarily a youth operated club (such as a school) or youth individual. We also plan to create a program prompting the youth to engage in CW activity and learning. When all is said and done, we aim to go full force on an outreach program, to reach out in as many ways as possible to implement our curriculum program in schools, institutions, and of course, to the young demographic.
 
 Source: https://discord.com/channels/1176164085231009793/1232501943369465856/1232502951759581205
 
