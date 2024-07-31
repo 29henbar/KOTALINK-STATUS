@@ -1,15 +1,23 @@
 const express = require('express');
 const axios = require('axios');
 const { exec } = require('child_process');
+const { promisify } = require('util');
 const app = express();
 const port = 3000;
+
+const execPromise = promisify(exec);
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', async (req, res) => {
-  const status = await getStatus();
-  res.render('index', { status });
+  try {
+    const status = await getStatus();
+    res.render('index', { status });
+  } catch (error) {
+    console.error('Error rendering status:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 async function getStatus() {
@@ -34,11 +42,10 @@ async function getStatus() {
     console.error('Error fetching Allstar status:', error);
   }
 
-
   // Echolink Status
   try {
-    const allstarResponse = await axios.get('https://www.echolink.org/logins.jsp');
-    if (allstarResponse.data.includes('N0DYG-R')) {
+    const echolinkResponse = await axios.get('https://www.echolink.org/logins.jsp');
+    if (echolinkResponse.data.includes('N0DYG-R')) {
       status.echolink = 'working';
     } else {
       status.echolink = 'not working';
@@ -62,7 +69,7 @@ async function getStatus() {
   // DMR status
   try {
     const dmrResponse = await axios.get('https://tgif.network/tgprofile.php?id=350');
-    if (dmrResponse.data.includes('350')) {
+    if (dmrResponse.data.includes('KOTA')) {
       status.dmr = 'working';
     } else {
       status.dmr = 'not working';
@@ -71,43 +78,34 @@ async function getStatus() {
     console.error('Error fetching DMR status:', error);
   }
 
-  exec('systemctl status mmdvm_bridge', (error, stdout, stderr) => {
-    if (!error && stdout.includes('active (running)')) {
-      status.dmr = 'working';
-    } else {
-      status.dmr = 'not working';
-    }
-  });
 
-  // YSF status
-  exec('systemctl status mmdvm_bridge 2', (error, stdout, stderr) => {
-    if (!error && stdout.includes('active (running)')) {
+// YSF status
+  try {
+    const ysfResponse = await axios.get('https://www.pistar.uk/ysf_reflectors.php');
+    if (ysfResponse.data.includes('57686')) {
       status.ysf = 'working';
     } else {
       status.ysf = 'not working';
     }
-  });
+  } catch (error) {
+    console.error('Error fetching YSF status:', error);
+  }
 
   // P25 status
-  exec('systemctl status usrp2p25', (error, stdout, stderr) => {
-    if (!error && stdout.includes('active (running)')) {
+  try {
+    const p25Response = await axios.get('https://www.pistar.uk/p25_reflectors.php');
+    if (p25Response.data.includes('65103')) {
       status.p25 = 'working';
     } else {
       status.p25 = 'not working';
     }
-  });
-
-  exec('systemctl status p25gateway', (error, stdout, stderr) => {
-    if (!error && stdout.includes('active (running)')) {
-      status.p25 = 'working';
-    } else {
-      status.p25 = 'not working';
-    }
-  });
+  } catch (error) {
+    console.error('Error fetching P25 status:', error);
+  }
 
   return status;
 }
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port} Built by Henry KD9YWF and Collin K0NNK. Well you don't know meee... But I know youuu.`);
 });
